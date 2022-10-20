@@ -25,7 +25,7 @@ int convert_key(char *key){
 char *caesar_encrypt(char *plain, char *key){
 	int intkey = convert_key(key);
 	for (int i=0;i<sizeof(plain);i++){		
-		char letter=caesar_encrypt(plain[i],key);
+		char letter=caesar_encrypt_char(plain[i],key);
 		plain[i]=letter;
 	}
 }
@@ -44,5 +44,5 @@ char caesar_encrypt_char(char plain, int key){
 	return numberletter;
 }
 
-
+}
 
