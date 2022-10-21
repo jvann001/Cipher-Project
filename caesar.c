@@ -38,6 +38,12 @@ char caesar_encrypt_char(char plain, int key){
 		if(plain<=122 && plain>=97){
 			lcase=97;
 		}
+		else 
+			if(plain<=58 && plain>=33){
+				lcase=33;
+			}
+				else
+					return plain;
 	int letmin=plain-lcase;
 	int letternumber=(letmin+key)%26;
 	char numberletter=letternumber+lcase;
@@ -63,8 +69,14 @@ char caesar_decrypt_char(char plain, int key){
                 if(plain<=122 && plain>=97){
                         lcase=97;
                 }
+		else
+			if(plain<=58 && plain>=33){
+				lcase=33;
+			}
+			else
+				return plain;
         int letmin=plain-lcase;
-        int letternumber=(letmin-key+260)%26;
+        int letternumber=(letmin-key+456976)%26;
         char numberletter=letternumber+lcase;
         return numberletter;
 }
