@@ -1,12 +1,7 @@
 /*This it the Caesar Cipher
 =======
-
-
-struct *caesar_encrypt
-
-
->>>>>>> dba5d972ff54b8e6f35beede664ae79879f4bb84
 */
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "strings.h"
@@ -26,27 +21,70 @@ int convert_key(char *key){
 }
 char *caesar_encrypt(char *plain, char *key){
 	int intkey = convert_key(key);
-	for (int i=0;i<sizeof(plain);i++){		
+	char *cipher=malloc((strlen(plain)+1)*4);
+	for (int i=0;i<strlen(plain);i++){ 
 		char letter=caesar_encrypt_char(plain[i],intkey);
-		plain[i]=letter;
+		cipher[i]=letter;
 	}
+	return cipher;
 }
 
 char caesar_encrypt_char(char plain, int key){
 	int lcase;
 	if (plain<=90 && plain>=65){
-		lcase=64;
+		lcase=65;
 	}
 	else
 		if(plain<=122 && plain>=97){
-			lcase=96;
+			lcase=97;
 		}
-	int letternumber=(plain+key)%26;
+		else 
+			if(plain<=58 && plain>=33){
+				lcase=33;
+			}
+				else
+					return plain;
+	int letmin=plain-lcase;
+	int letternumber=(letmin+key)%26;
 	char numberletter=letternumber+lcase;
 	return numberletter;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
 =======
 >>>>>>> 1d1ad087c7706b3b62abd98e87ac89c1019d35fe
+=======
+
+char *caesar_decrypt(char *cipher, char *key){
+	    int intkey = convert_key(key);
+        char *orig=malloc((strlen(cipher)+1)*4);
+        for (int i=0;i<strlen(cipher);i++){
+                char letter=caesar_decrypt_char(cipher[i],intkey);
+                orig[i]=letter;
+        }
+        return orig;
+}
+
+char caesar_decrypt_char(char plain, int key){
+        int lcase;
+        if (plain<=90 && plain>=65){
+                lcase=65;
+        }
+        else
+                if(plain<=122 && plain>=97){
+                        lcase=97;
+                }
+		else
+			if(plain<=58 && plain>=33){
+				lcase=33;
+			}
+			else
+				return plain;
+        int letmin=plain-lcase;
+        int letternumber=(letmin-key+456976)%26;
+        char numberletter=letternumber+lcase;
+        return numberletter;
+}
+>>>>>>> 12da44fa81645d94a467b5aa46894d4bd7bd79db
