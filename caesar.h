@@ -1,6 +1,6 @@
 #ifndef _CAESAR_H
 #define _CAESAR_H
-#include "caesar.h"
+#include "caesar.c"
 char *caesar_encrypt(char *plain, char *key);
 char *caesar_decrypt(char *cipher, char *key);
 char caesar_encrypt_char(char plain, int key);
