@@ -49,13 +49,8 @@ char caesar_encrypt_char(char plain, int key){
 	char numberletter=letternumber+lcase;
 	return numberletter;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 
-=======
->>>>>>> 1d1ad087c7706b3b62abd98e87ac89c1019d35fe
-=======
 
 char *caesar_decrypt(char *cipher, char *key){
 	    int intkey = convert_key(key);
@@ -87,4 +82,3 @@ char caesar_decrypt_char(char plain, int key){
         char numberletter=letternumber+lcase;
         return numberletter;
 }
->>>>>>> 12da44fa81645d94a467b5aa46894d4bd7bd79db
