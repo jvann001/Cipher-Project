@@ -49,7 +49,6 @@ char caesar_encrypt_char(char plain, int key){
 	char numberletter=letternumber+lcase;
 	return numberletter;
 }
-}
 
 
 char *caesar_decrypt(char *cipher, char *key){
