@@ -44,13 +44,95 @@ int main(){
                         t2->print(t2, PLAIN);
                         print_C_string(b2);
 		}
-		if(in='C'){
+		if(in=='C'){
 			char ciph;
 			if(ciph!='Q'){
-				printf("Default Keys:\nCaesar: 1\nAugustus: 12\nAES: 0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6\n     0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c\n\nEnter command - (Q)uit, (C)aesar, (AU)gustus, (AE)s: ");
+				printf("Default Keys:\nCaesar: 1\nAugustus: 12\nAES: 0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6\n     0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c\n\nEnter command - (Q)uit, (C)aesar, A(U)gustus, (A)es: ");
 				scanf("%c",&ciph);
 				printf("\n");
 				char in_s[120];
+				cipher cenum;
+				if (ciph=='C'){
+					cenum=CAESAR;
+					printf("\nEnter string: ");
+					fgets(in_s, 120, stdin);
+					in_s[strcspn(in_s, "\0")] = '\0';  // replace \n with \0
+					if (strlen(in_s) == 0) {
+					printf("You must enter a string!");
+					}
+					char key[64];
+					printf("Enter key (Enter for default): ");
+					fgets(key,64,stdin);
+					if (key[0]=='\n'){
+						strcpy(key,"0");
+					}
+					string *ms = new_plain(in_s, cenum);
+					printf("\nPlain text string:\n");
+					ms->print(ms, PLAIN);
+					string *b = ms->encrypt(cenum, in_s, key);
+					printf("\nCipher text string:\n");
+					b->print(b, CIPHER);
+					char *s = b->decrypt(cenum, b, key);
+					printf("\nDecrypted input:\n");
+					printf("%s\n", s);
+					print_C_string(s);
+					b->print(b, PLAIN);
+					}
+				else
+					if (ciph=='U'){
+						cenum=AUGUSTUS;
+						printf("\nEnter string: ");
+						fgets(in_s, 120, stdin);
+						in_s[strcspn(in_s, "\0")] = '\0';  // replace \n with \0
+						if (strlen(in_s) == 0) {
+						printf("You must enter a string!");
+						}
+						char key[64];
+						printf("Enter key (Enter for default): ");
+						fgets(key,20,stdin);
+						if (key[0]=='\n'){
+							strcpy(key,"12");
+						}
+						string *ms = new_plain(in_s, cenum);
+						printf("\nPlain text string:\n");
+						ms->print(ms, PLAIN);
+						string *b = ms->encrypt(cenum, in_s, key);
+						printf("\nCipher text string:\n");
+						b->print(b, CIPHER);
+						char *s = b->decrypt(cenum, b, key);;
+						printf("\nDecrypted input:\n");
+						printf("%s\n", s);
+						print_C_string(s);
+						b->print(b, PLAIN);
+                                        }
+					else
+						if (ciph=='A'){
+							cenum=AES;
+							printf("\nEnter string: ");
+							fgets(in_s, 120, stdin);
+							in_s[strcspn(in_s, "\0")] = '\0';  // replace \n with \0
+							if (strlen(in_s) == 0) {
+							printf("You must enter a string!");
+							}
+							char key[64];
+							printf("Enter key (Enter for default): ");
+							fgets(key,20,stdin);
+							if (key[0]=='\n'){
+								strcpy(key,"2b 7e 15 16 28 ae d2 a6 ab f7 15 88 09 cf 4f 3c");
+							}
+							string *ms = new_plain(in_s, cenum);
+							printf("\nPlain text string:\n");
+							ms->print(ms, PLAIN);
+							string *b = ms->encrypt(cenum, in_s, key);
+							printf("\nCipher text string:\n");
+							b->print(b, CIPHER);
+							char *s = b->decrypt(cenum, b, key);
+							printf("\nDecrypted input:\n");
+							printf("%s\n", s);
+							print_C_string(s);
+							b->print(b, PLAIN);
+							}
+
 			}
 		}
 	}
