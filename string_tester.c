@@ -8,8 +8,9 @@
 int main(){
 
 	char in;
-	if (in!='Q'){
-		printf("Would you like to use (D)efault, (C)ommand, or (F)ile processing? (Q)uit: ");	
+	char ciph;
+	printf("Would you like to use (D)efault, (C)ommand, or (F)ile processing? (Q)uit: ");
+	while (in!='Q'){
 		scanf("%c",&in);
                 printf("\n");
 		if (in=='D'){
@@ -45,18 +46,16 @@ int main(){
                         print_C_string(b2);
 		}
 		if(in=='C'){
-			char ciph;
-		}
-		if(in='F'){
+	/*	if(in='F'){
 			FILE *fin = fopen("ciphers.txt", "r");
 			char cipherLine;
 			int key;
 			char targetString;
 			
 			int numberOfLines, count = 0;
+*/
 
-
-			if(ciph!='Q'){
+			while(ciph!='Q'){
 				printf("Default Keys:\nCaesar: 1\nAugustus: 12\nAES: 0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6\n     0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c\n\nEnter command - (Q)uit, (C)aesar, A(U)gustus, (A)es: ");
 				scanf("%c",&ciph);
 				printf("\n");
@@ -64,7 +63,7 @@ int main(){
 				cipher cenum;
 				if (ciph=='C'){
 					cenum=CAESAR;
-					printf("\nEnter string: ");
+					printf("\nEnter string: \n");
 					fgets(in_s, 120, stdin);
 					in_s[strcspn(in_s, "\0")] = '\0';  // replace \n with \0
 					if (strlen(in_s) == 0) {
@@ -91,7 +90,7 @@ int main(){
 				else
 					if (ciph=='U'){
 						cenum=AUGUSTUS;
-						printf("\nEnter string: ");
+						printf("Enter string:\n ");
 						fgets(in_s, 120, stdin);
 						in_s[strcspn(in_s, "\0")] = '\0';  // replace \n with \0
 						if (strlen(in_s) == 0) {
